@@ -5,18 +5,18 @@
 
 
 ### Text
-text.color : D9D9D9
+text.color : 004d40 
 font.size : 10
 font.family : sans-serif
   
 
 ### Ticks
-xtick.color : D9D9D9
-ytick.color : D9D9D9
+xtick.color : 004d40
+ytick.color : 004d40
 
 ### Axes
-axes.labelcolor : D9D9D9
-axes.edgecolor : D9D9D9
+axes.labelcolor : 004d40
+axes.edgecolor : 004d40
 axes.facecolor : 006064
 #axes.alpha : 1
 axes.prop_cycle : cycler('color', ['04D9D9', 'F241A3', 'FA851E', 'BFD91A', 'D9D9D9', '1AA0D9', 'E62F53',  'FEED00'])
