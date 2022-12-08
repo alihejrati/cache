@@ -1,0 +1,23 @@
+!rm -rf /content/GENIE_ML
+
+
+%cd /content
+!git clone https://github.com/halfbloodprincecode/GENIE_ML.git
+%cd GENIE_ML
+
+
+# !pip install -q pretty_errors
+# !pip install -q python-dotenv
+# !pip install -q attrdict
+# !pip install -q ORM-SQLite
+# !pip install -q pudb
+# !pip install -q loguru
+# !pip install -q omegaconf
+# !pip install -q pytorch-lightning
+# !pip install -q einops
+# !pip install -q albumentations
+# !pip install -q academictorrents
+# !pip install -q kaggle
+
+
+!python "-u" index.py --base apps/VQGAN/configs/eyepacs_vqgan.yaml --gpus 0, -t True --app VQGAN
