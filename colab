@@ -20,4 +20,4 @@
 # !pip install -q kaggle
 
 
-!python "-u" index.py --base apps/VQGAN/configs/eyepacs_vqgan.yaml --gpus 0, -t True --app VQGAN
+!python "-u" index.py --base apps/VQGAN/configs/eyepacs_vqgan.yaml --gpus 0, -t True --app VQGAN --hash-ignore 5ee327ab28725a85bb9fcf6bd3a379052b659d9b -r @/content/drive/MyDrive/AAAAAAAA/storage/Genie_ML/VQGAN/logs/2022-12-10T12-58-50_eyepacs_vqgan
