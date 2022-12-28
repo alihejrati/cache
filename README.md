@@ -1,1 +1,1 @@
-cache server for small files.
+cache server for small and static files.
