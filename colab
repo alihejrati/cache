@@ -17,6 +17,7 @@
 # !pip install -q albumentations
 # !pip install -q academictorrents
 # !pip install -q kaggle
+# !pip install -q transformers
 
 # !python -m pytorch_lightning.utilities.upgrade_checkpoint --file "/content/drive/MyDrive/storage/Genie_ML/VQGAN/logs/2022-12-14T14-24-22_eyepacs_vqgan/checkpoints/last.ckpt"
 !python "-u" index.py --base apps/VQGAN/configs/eyepacs_vqgan.yaml --gpus 0, -t True --app "VQGAN:pretrained_Dorg_V" -r @2022-12-14T14-24-22_eyepacs_vqgan -H 5ee327ab28725a85bb9fcf6bd3a379052b659d9b 
