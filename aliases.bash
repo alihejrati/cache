@@ -141,9 +141,8 @@ pmsql ()
     echo $(python manage.py makemigrations $1 --empty)
 }
 
-
 # temp
-alias tempopenportftp='sudo ufw allow 20/tcp && sudo ufw allow 21/tcp'
+alias tempopenportftp='fwop 20/tcp && fwop 21/tcp'
 
 # task -> t
 alias tftpserver='iftpserver && scstartftp && sceftp && tempopenportftp '
