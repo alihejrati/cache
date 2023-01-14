@@ -121,7 +121,7 @@ alias pmdbsh='python manage.py dbshell'
 alias pmdd='python manage.py dumpdata'
 alias pmerddot='python manage.py graph_models -a > documentation/ERD.dot'
 alias pmerd='pmerddot && python manage.py graph_models --pydot -a -g -o documentation/ERD.png'
-alias doc='mkp documentation && pmerd'
+alias pmdoc='mkp documentation && pmerd'
 alias pmld='python manage.py loaddata'
 alias pmm='python manage.py migrate'
 alias pmmg='pm2m && python manage.py migrate'
@@ -148,6 +148,3 @@ alias tempopenportftp='sudo ufw allow 20/tcp && sudo ufw allow 21/tcp'
 # task -> t
 alias tftpserver='iftpserver && scstartftp && sceftp && tempopenportftp '
 alias tsshserver='isshserver && scessh && scstartssh'
-
-
-
