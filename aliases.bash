@@ -3,12 +3,36 @@ alias iftpserver='sudo apt install vsftpd'
 alias isshserver='sudo apt-get install openssh-server'
 alias ierd='sudo apt install graphviz && apt install graphviz-dev && pipenv install pyparsing pydot && pipenv install django-extensions'
 
+# kernel -> k
+alias kos="uname"
+alias kv="uname -r"
+alias kV="cat /proc/version"
+alias knet="nmcli"
+alias knet-device="nmcli device status"
+alias knet-condev="knet-device | grep connected | kf-split 1"
+alias kcpu="cat /proc/cpuinfo"
+alias khost="hostnamectl"
+kf-split ()
+{
+	set -- "${1:-0}" "${2:- }"
+	while read -r line; do
+        	local data="$data $line"
+    	done
+	local data=$(echo $data | tr '\n' ' ' | xargs)
+	if [ "$1" -eq "0" ]; then
+   		echo $data;
+   		exit;
+	fi
+	echo $(echo $data | cut -d"$2" -f$1)
+}
+
 # notify
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # alias
 alias alias-f="declare"
 alias alias-F="declare -F"
+alias alias-g="alias | grep"
 
 # grep
 alias grep='grep --color=auto'
@@ -48,22 +72,22 @@ alias scfSF='sudo systemctl --type=service --state=failed'
 alias scfSI='sudo systemctl --type=service --state=inactive'
 alias scfSR='sudo systemctl --type=service --state=running'
 
-# service -> ss
+# service -> ss | Reserved: ss
 alias ssrftp='ssr vsftpd'
-ssr () 
-{ 
+ssr ()
+{
     echo $(sudo service $1 restart)
 }
-sss () 
-{ 
+sss ()
+{
     echo $(sudo service $1 status)
 }
-ssstart () 
-{ 
+ssstart ()
+{
     echo $(sudo service $1 start)
 }
-ssstop () 
-{ 
+ssstop ()
+{
     echo $(sudo service $1 stop)
 }
 
