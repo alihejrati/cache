@@ -5,6 +5,12 @@ alias iapache2server="sudo apt install apache2"
 alias igdown="pip install -q gdown"
 alias ierd='sudo apt install graphviz && apt install graphviz-dev && pipenv install pyparsing pydot && pipenv install django-extensions'
 
+# high level customization
+CD ()
+{
+    eval "mkdir -p $1 && cd $1"
+}
+
 
 # kernel -> k
 alias kwhat="type -a"
