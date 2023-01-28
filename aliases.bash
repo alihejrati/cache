@@ -1,17 +1,36 @@
 # install -> i
 alias iftpserver='sudo apt install vsftpd'
 alias isshserver='sudo apt-get install openssh-server'
+alias iapache2server="sudo apt install apache2"
+alias igdown="pip install -q gdown"
 alias ierd='sudo apt install graphviz && apt install graphviz-dev && pipenv install pyparsing pydot && pipenv install django-extensions'
 
+
 # kernel -> k
+alias kwhat="type -a"
 alias kos="uname"
 alias kv="uname -r"
 alias kV="cat /proc/version"
 alias knet="nmcli"
+alias knet-advanced="sudo tcpdump -D"
 alias knet-device="nmcli device status"
 alias knet-condev="knet-device | grep connected | kf-split 1"
+alias knet-tc-advanced="sudo iptraf-ng"
 alias kcpu="cat /proc/cpuinfo"
 alias khost="hostnamectl"
+alias kcg-tree="systemd-cgls"
+alias kcg-controllers="cat /proc/cgroups"
+alias kcg-controllers-advanced="lssubsys"
+alias kcg-controllers-advanced-paths="lssubsys -M"
+alias kcg-controllers-advanced-paths-only="kcg-controllers-advanced-paths | grep '\/.*' -o | grep ''"
+alias kpo="fwop"
+alias kpc="fwcp"
+kf-pls ()
+{
+	set -- "${1:-}" "${2:-ltnp}"
+	eval "sudo netstat -$2 | grep -w '.*$1' | grep ''"
+}
+
 kf-split ()
 {
 	set -- "${1:-0}" "${2:- }"
@@ -33,6 +52,11 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias alias-f="declare"
 alias alias-F="declare -F"
 alias alias-g="alias | grep"
+alias-def ()
+{
+    eval "alias $1=\"$2\""
+}
+
 
 # grep
 alias grep='grep --color=auto'
@@ -100,6 +124,11 @@ alias ftph='ftp $(hostname)'
 alias scstartftp='scstart vsftpd'
 alias sceftp='sce vsftpd'
 alias scrftp='scr vsftpd'
+wgetftp ()
+{
+	set -- "${1:-/}" "${2:-/}" "${3:-localhost}" "${4:-root}" "${5:-toor}"
+	eval "wget -r \"ftp://$3/$1\" --ftp-user=\"$4\" --ftp-password=\"$5\" -P \"$2\""
+}
 
 # ssh
 alias scstartssh='scstart ssh'
