@@ -1,8 +1,13 @@
 # install -> i
+alias ipy3="sudo apt install python3-pip"
 alias iftpserver='sudo apt install vsftpd'
 alias isshserver='sudo apt-get install openssh-server'
 alias iapache2server="sudo apt install apache2"
+alias ipysftp="pip install pysftp"
+alias iunzip="sudo apt install unzip"
 alias igdown="pip install -q gdown"
+alias itorch="pip install torch"
+alias ipl="pip install pytorch-lightning"
 alias ierd='sudo apt install graphviz && apt install graphviz-dev && pipenv install pyparsing pydot && pipenv install django-extensions'
 
 # high level customization
@@ -29,6 +34,8 @@ alias kcg-controllers="cat /proc/cgroups"
 alias kcg-controllers-advanced="lssubsys"
 alias kcg-controllers-advanced-paths="lssubsys -M"
 alias kcg-controllers-advanced-paths-only="kcg-controllers-advanced-paths | grep '\/.*' -o | grep ''"
+alias kmerge="cat ./* > merged"
+alias kmerge-ckpt="kmerge && unzip ./merged"
 alias kpo="fwop"
 alias kpc="fwcp"
 kf-pls ()
@@ -72,7 +79,7 @@ alias fgrep='fgrep --color=auto'
 # list
 alias l='ls -CF'
 alias la='ls -A'
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias ls='ls --color=auto'
 
 # link
@@ -125,6 +132,9 @@ ssstop ()
 alias fwcp='sudo ufw deny '
 alias fwop='sudo ufw allow '
 
+# apache2
+alias apache2r="sudo /etc/init.d/apache2 restart"
+
 # ftp
 alias ftph='ftp $(hostname)'
 alias scstartftp='scstart vsftpd'
@@ -135,10 +145,23 @@ wgetftp ()
 	set -- "${1:-/}" "${2:-/}" "${3:-localhost}" "${4:-root}" "${5:-toor}"
 	eval "wget -r \"ftp://$3/$1\" --ftp-user=\"$4\" --ftp-password=\"$5\" -P \"$2\""
 }
+pemsftp ()
+{
+        set -- "${1:-}" "${2:-~/VPS/ac-fum-privateKey.pem}" "${3:-5.160.40.35}" "${4:-ubuntu}"
+        eval "sudo sftp -P $1 -i $2 $4@$3"
+}
+
 
 # ssh
 alias scstartssh='scstart ssh'
 alias scessh='sce ssh'
+alias rsapubssh="sudo cat ~/.ssh/id_rsa.pub"
+pemssh ()
+{
+        set -- "${1:-}" "${2:-~/VPS/ac-fum-privateKey.pem}" "${3:-5.160.40.35}" "${4:-ubuntu}"
+        eval "sudo ssh -i $2 $4@$3 -p $1"
+}
+
 
 # mysql
 alias scstartmysql='scstart mysql.service'
@@ -205,4 +228,6 @@ alias tempopenportftp='fwop 20/tcp && fwop 21/tcp'
 
 # task -> t
 alias tftpserver='iftpserver && scstartftp && sceftp && tempopenportftp '
+alias tftpserver-colab="iftpserver && /etc/init.d/vsftpd start"
 alias tsshserver='isshserver && scessh && scstartssh'
+alias tfum="ipy3 && iftpserver && iapache2server && iunzip && igdown && ipysftp && itorch && ipl"
