@@ -1,10 +1,14 @@
 # install -> i
 alias ipy3="sudo apt install python3-pip"
+alias icowsay="sudo apt install cowsay"
 alias iftpserver='sudo apt install vsftpd'
 alias isshserver='sudo apt-get install openssh-server'
 alias iapache2server="sudo apt install apache2"
-alias ipysftp="pip install pysftp"
+alias itmux="sudo apt-get install -y tmux"
 alias iunzip="sudo apt install unzip"
+alias ilibtmux="pip install --user libtmux"
+alias iptpython="pip install --user ptpython"
+alias ipysftp="pip install pysftp"
 alias igdown="pip install -q gdown"
 alias itorch="pip install torch"
 alias ipl="pip install pytorch-lightning"
@@ -62,6 +66,7 @@ kf-split ()
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # alias
+alias py="ptpython"
 alias alias-f="declare"
 alias alias-F="declare -F"
 alias alias-g="alias | grep"
@@ -162,6 +167,19 @@ pemssh ()
         eval "sudo ssh -i $2 $4@$3 -p $1"
 }
 
+# projects -> P
+alias Pgml="wget 'https://raw.githubusercontent.com/halfbloodprincecode/GENIE_ML/master/index.bash' -O 'GENIE_ML_index.bash' && sudo bash ./GENIE_ML_index.bash"
+
+# tmux -> T
+alias Tserver="tmux start-server"
+alias Tkserver="tmux kill-server"
+alias Tls="tmux list-session"
+alias Tcr-without-s="tmux new-session -d"
+alias Tcr="tmux new-session -d -s " # -s session_name | optional: -n window_name
+alias Tup="tmux attach-session -t " # session_name
+alias Tdn=""
+alias Tdel="tmux kill-session -t " # session_name
+alias Trename="tmux rename-session -t" # current_session_name new_session_name
 
 # mysql
 alias scstartmysql='scstart mysql.service'
@@ -230,4 +248,4 @@ alias tempopenportftp='fwop 20/tcp && fwop 21/tcp'
 alias tftpserver='iftpserver && scstartftp && sceftp && tempopenportftp '
 alias tftpserver-colab="iftpserver && /etc/init.d/vsftpd start"
 alias tsshserver='isshserver && scessh && scstartssh'
-alias tfum="ipy3 && iftpserver && iapache2server && iunzip && igdown && ipysftp && itorch && ipl"
+alias tfum="ipy3 && iptpython && icowsay && tftpserver && iapache2server && itmux && ilibtmux && iunzip && igdown && ipysftp && itorch && ipl"
