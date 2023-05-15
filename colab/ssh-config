@@ -1,7 +1,7 @@
 Host <user_1.github.com>
   Hostname github.com
   PreferredAuthentications publickey
-  IdentityFile /root/.ssh/.ssh/id_rsa
+  IdentityFile /root/.ssh/id_rsa
 
 Host *.trycloudflare.com
   HostName %h
